@@ -26,7 +26,11 @@ unzip x64dbgpy.zip -d x64dbg/release
 # https://github.com/x64dbg/mona
 
 # Download mona.py and pykd.py from GitHub
-wget https://github.com/corelan/mona/raw/master/mona.py
+
+wget https://github.com/x64dbg/mona/raw/master/clean_mona.py -P x64dbg/release/x64/plugins/x64dbgpy/x64dbgpy/autorun
+cp x64dbg/release/x64/plugins/x64dbgpy/x64dbgpy/autorun/clean_mona.py x64dbg/release/x32/plugins/x64dbgpy/x64dbgpy/autorun
+
+wget https://github.com/x64dbg/mona/raw/master/mona.py
 wget https://github.com/x64dbg/x64dbgpylib/raw/master/pykd.py
 wget https://github.com/x64dbg/x64dbgpylib/raw/master/x64dbgpylib.py
 
