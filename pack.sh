@@ -50,3 +50,7 @@ echo "PYKD_VERSION=$PYKD_VERSION" >> x64dbg/version.txt
 echo "X64DBGPYLIB_REVISION=$X64DBGPYLIB_REVISION" >> x64dbg/version.txt
 
 export VERSION_HASH=$(sha256sum x64dbg/version.txt | awk '{ print $1 }')
+echo "TEST_VERSION_HASH=$VERSION_HASH" >> $GITHUB_ENV
+
+rm x64dbg.zip
+zip -r x64dbg.zip x64dbg
