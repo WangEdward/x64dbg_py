@@ -32,4 +32,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with: 
-          path: working_dir/x64dbg.zip
+          path: |
+            working_dir/x64dbg.zip
+            working_dir/version.md

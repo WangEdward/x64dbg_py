@@ -49,8 +49,20 @@ echo "MONA_REVISION=$MONA_REVISION" >> x64dbg/version.txt
 echo "PYKD_VERSION=$PYKD_VERSION" >> x64dbg/version.txt
 echo "X64DBGPYLIB_REVISION=$X64DBGPYLIB_REVISION" >> x64dbg/version.txt
 
-export VERSION_HASH=$(sha256sum x64dbg/version.txt | awk '{ print $1 }')
-echo "TEST_VERSION_HASH=$VERSION_HASH" >> $GITHUB_ENV
+# write version info to markdown file
+# | Name | version |
+# | ---- | ------- |
+# | x64dbg | 3.0 |
+echo "| Name | version |" > version.md
+echo "| ---- | ------- |" >> version.md
+echo "| x64dbg | $X64DBG_COMMIT_HASH |" >> version.md
+echo "| x64dbgpy | $X64DBGPY_LATEST_TAG |" >> version.md
+echo "| mona | $MONA_REVISION |" >> version.md
+echo "| pykd | $PYKD_VERSION |" >> version.md
+echo "| x64dbgpylib | $X64DBGPYLIB_REVISION |" >> version.md
+
+export VERSION_MD_HASH=$(sha256sum version.md | awk '{ print $1 }')
+echo "VERSION_HASH=$VERSION_MD_HASH" >> $GITHUB_ENV
 
 rm x64dbg.zip
 zip -r x64dbg.zip x64dbg
