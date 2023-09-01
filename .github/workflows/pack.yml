@@ -35,3 +35,14 @@ jobs:
           path: |
             working_dir/x64dbg.zip
             working_dir/version.md
+      
+      - name: Release
+        id: release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: working_dir/x64dbg.zip
+          tag: ${{env.VERSION_HASH}}
+          bodyFile: working_dir/version.md
+          draft: false
+          prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}
