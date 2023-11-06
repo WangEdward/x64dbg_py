@@ -47,6 +47,7 @@ jobs:
           tag: ${{env.VERSION_HASH}}
           bodyFile: working_dir/version.md
           draft: false
+          makeLatest: true
           prerelease: false
           skipIfReleaseExists: true
           token: ${{ secrets.GITHUB_TOKEN }}
